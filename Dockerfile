@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
     libgd-dev \
     libpq-dev \
     git \
-    openssh-server \
+    vsftpd \
     && rm -rf /var/lib/apt/lists/*
 
 # Instalar extensiones de PHP
@@ -35,8 +35,8 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/
 RUN a2enmod rewrite setenvif && a2dissite * && a2disconf other-vhosts-access-log
 RUN echo 'ServerName localhost' >> /etc/apache2/apache2.conf
 
-# Configurar y habilitar SSH
-RUN mkdir /var/run/sshd
+# Configurar y habilitar FTP
+COPY vsftpd.conf /etc/vsftpd.conf
 
 # Copiar el script de entrada
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
@@ -45,11 +45,11 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 # Copiar el contenido de la carpeta actual al directorio raíz del servidor web en el contenedor
 COPY . /var/www/html/
 
-# Exponer el puerto 80, 8080, 443 y 22 para SSH
+# Exponer el puerto 80, 8080, 443 y 21 para FTP
 EXPOSE 80
 EXPOSE 8080
 EXPOSE 443
-EXPOSE 22
+EXPOSE 21
 
 # Configurar el script de entrada
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

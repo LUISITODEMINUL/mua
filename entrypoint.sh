@@ -4,8 +4,11 @@
 useradd -m ${SFTP_USER}
 echo "${SFTP_USER}:${SFTP_PASS}" | chpasswd
 mkdir -p /home/${SFTP_USER}/.ssh
-chown -R ${SFTP_USER}:${SFTP_USER} /home/${SFTP_USER}/.ssh
+chown -R ${SFTP_USER}:${SFTP_USER} /home/${SFTP_USER}/ftp
 
-# Iniciar SSH y Apache en primer plano
-service ssh start
+
+
+# Iniciar vsftpd y Apache en primer plano
+service vsftpd start
 apache2ctl -D FOREGROUND
+
