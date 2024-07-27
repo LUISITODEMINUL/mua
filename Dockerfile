@@ -38,9 +38,9 @@ RUN echo 'ServerName localhost' >> /etc/apache2/apache2.conf
 # Configurar y habilitar SSH
 RUN mkdir /var/run/sshd
 
-# Crear usuario y configurar SSH
-RUN useradd -m ${SFTP_USER} && echo "${SFTP_USER}:${SFTP_PASS}" | chpasswd
-RUN mkdir -p /home/${SFTP_USER}/.ssh && chown -R ${SFTP_USER}:${SFTP_USER} /home/${SFTP_USER}/.ssh
+# Copiar el script de entrada
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Copiar el contenido de la carpeta actual al directorio raíz del servidor web en el contenedor
 COPY . /var/www/html/
@@ -51,5 +51,5 @@ EXPOSE 8080
 EXPOSE 443
 EXPOSE 22
 
-# Iniciar Apache y SSH en primer plano
-CMD ["/bin/bash", "-c", "service ssh start && apache2ctl -D FOREGROUND"]
+# Configurar el script de entrada
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
