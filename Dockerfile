@@ -45,11 +45,12 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 # Copiar el contenido de la carpeta actual al directorio raíz del servidor web en el contenedor
 COPY . /var/www/html/
 
-# Exponer el puerto 80, 8080, 443 y 21 para FTP
+# Exponer el puerto 80, 8080, 443, 21 y el rango de puertos pasivos
 EXPOSE 80
 EXPOSE 8080
 EXPOSE 443
 EXPOSE 21
+EXPOSE 10000-10100
 
 # Configurar el script de entrada
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
