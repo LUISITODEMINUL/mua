@@ -1,6 +1,33 @@
 # Usar la imagen oficial de Apache
 FROM php:8.1-apache
 
+RUN apt-get update && apt-get install -y \
+    gcc make autoconf libc-dev pkg-config \
+    libbz2-dev \
+    libcurl4-openssl-dev \
+    libxml2-dev \
+    mariadb-client \
+    libssl-dev \
+    libldap-dev \
+    libpcre3-dev \
+    libmariadb-dev \
+    libonig-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libzip-dev \
+    zip \
+    unzip \
+    libicu-dev \
+    libldap2-dev \
+    libgd-dev \
+    libpq-dev \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalar extensiones de PHP
+RUN docker-php-ext-install -j$(nproc) \
+    mysqli pdo_mysql ctype soap session dom bcmath zip intl gd bz2 mbstring pgsql opcache sockets
+
 # Instalar extensiones de PHP
 RUN docker-php-ext-install -j$(nproc) \
     mysqli pdo_mysql ctype soap session dom bcmath zip intl gd bz2 mbstring pgsql opcache sockets
