@@ -1,5 +1,6 @@
 # Usar la imagen oficial de Apache
-FROM php:8.1-apache
+FROM php:8.1-apaches
+
 
 RUN apt-get update && apt-get install -y \
     gcc make autoconf libc-dev pkg-config \
