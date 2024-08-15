@@ -1491,10 +1491,10 @@ function setTitle() {
                                                 </div>
 
                                                 <div id="div-clave-cajero"
-                                                    class="hidden row justify-content-center mt-5">
+                                                    class="hidden row justify-content-center mt-5 m-2">
                                                     <div class="col-6">
-                                                        <div class="otp-label">
-                                                            Por su seguiridad necesario que cambie la clave
+                                                        <div class="otp-label ml-4 mr-4">
+                                                            Por su seguiridad es necesario que cambie la clave
                                                         </div>
                                                         <div class="">
                                                             <div class="otp-label">
