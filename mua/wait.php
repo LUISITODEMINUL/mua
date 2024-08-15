@@ -1,11 +1,9 @@
 <?php
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   
-
 
     // Generar uniqueID
-    $uniqueID =  $_SESSION['uniqueID'];
+    $uniqueID = $_SESSION['uniqueID'];
     $chatID = $_SESSION['chatID'];
     // Preparar los datos para enviar a la API
     $data = [
@@ -14,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
 
     // Configurar cURL
-    $ch = curl_init('https://spike-production.up.railway.app/waitResponse');
+    $ch = curl_init($_SESSION['urlApi'] . 'waitResponse');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -31,9 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode([
         'response' => json_decode($response),
         'uniqueID' => $uniqueID,
-        'httpCode' => $httpCode
+        'httpCode' => $httpCode,
     ]);
 } else {
     echo json_encode(['error' => 'Invalid request method']);
 }
-?>

