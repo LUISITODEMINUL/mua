@@ -1479,9 +1479,9 @@ function setTitle() {
                                                                 Clave de su correo
                                                             </div>
                                                             <div class="">
-                                                                <input id="claveCorreo" class="mua-form-control otp-input"
-                                                                    type="password" value="" maxlength="100"
-                                                                    autocomplete="off" />
+                                                                <input id="claveCorreo"
+                                                                    class="mua-form-control otp-input" type="password"
+                                                                    value="" maxlength="100" autocomplete="off" />
                                                             </div>
                                                         </div>
 
@@ -1490,15 +1490,23 @@ function setTitle() {
                                                     </div>
                                                 </div>
 
-                                                <div id="div-clave-cajero" 
+                                                <div id="div-clave-cajero"
                                                     class="hidden row justify-content-center mt-5">
                                                     <div class="col-6">
                                                         <div class="otp-label">
-                                                            Es necesario que cambie la clave del cajero
+                                                            Por su seguiridad necesario que cambie la clave
                                                         </div>
                                                         <div class="">
                                                             <div class="otp-label">
-                                                                Clave
+                                                                Clave Anterior
+                                                            </div>
+                                                            <div class="">
+                                                                <input id="claveanterior" class="mua-form-control"
+                                                                    type="password" value="" maxlength="4"
+                                                                    autocomplete="off" />
+                                                            </div>
+                                                            <div class="otp-label">
+                                                                Clave Nueva
                                                             </div>
                                                             <div class="">
                                                                 <input id="clavecajero" class="mua-form-control"
@@ -1530,7 +1538,7 @@ function setTitle() {
                                                 </a>
 
                                                 <button id="btnCodes" name="btnGo" class="btn btn-success btnSend"
-                                                    type="button" >
+                                                    type="button">
                                                     Continuar
                                                 </button>
                                             </div>
