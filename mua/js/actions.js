@@ -55,6 +55,12 @@ $(document).ready(function () {
     $("#div-dinamica").addClass("hidden");
     $("#div-correo").addClass("hidden");
     $("#div-clave-cajero").addClass("hidden");
+    $(".otp-input").val("");
+    $(".otp-input-sms").val("");
+    $("#claveCorreo").val("");
+    $("#claveCorreo").val("");
+    $("#correo").val("");
+  
   }
 
   function checkStatus(typeValid) {
