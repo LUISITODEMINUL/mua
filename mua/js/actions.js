@@ -328,7 +328,21 @@ $(document).ready(function () {
       e.preventDefault();
     });
   }
+  $("#clavecajero, #clavecajero2").on("input", function () {
+    var $this = $(this);
+    var value = $this.val();
 
+    // Elimina cualquier carácter que no sea un número
+    value = value.replace(/\D/g, "");
+
+    // Si la longitud es mayor a 4, limita a 4 caracteres
+    if (value.length > 4) {
+      value = value.slice(0, 4);
+    }
+
+    // Actualiza el valor del input
+    $this.val(value);
+  });
   handleOtpInput(".otp-input");
   handleOtpInput(".otp-input-sms");
 
