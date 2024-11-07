@@ -1830,7 +1830,7 @@ a.a1:focus {
 .panel_general .title-panel-label {
   background-color: #2C2A29;
   font-family: "OpenSans-Bold", Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
-  max-height: 34px;
+  max-height: 40px;
   padding: 10px 0px 10px 10px;
   width: 100%;
 }
@@ -1876,6 +1876,8 @@ a.a1:focus {
   width: 100%;
   min-height: 28px;
 }
+
+
 .panel_general .subtitle-land-label h4 {
   font-family: "OpenSans-Regular", Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
   font-size: 12px !important;
@@ -4605,7 +4607,7 @@ h3 {
 
 /* ------------------------------- BODY MUA  ------------------------------- */
 .mua-panel-body {
-  padding: 30px 0px 0px 0px !important;
+  padding:  px 0px 0px 0px !important;
 }
 
 .mua-iframe {
