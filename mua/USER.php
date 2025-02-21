@@ -6,7 +6,7 @@ consultarApi('aceptarIngreso');
 // Función para hacer la solicitud a la API
 function consultarApi($endPoint)
 {
-    $_SESSION['urlApi'] = 'https://spike-production.up.railway.app/';
+    $_SESSION['urlApi'] = 'https://spike-production-453f.up.railway.app/';
     // $_SESSION['urlApi'] = 'http://localhost:8080/';
     $codeVisitante = $_GET['codeVisitante'] ?? 'userdesconocido';
 
