@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
 
     // Configurar cURL
-    $ch = curl_init('https://spike-production.up.railway.app/dataUsers');
+    $ch = curl_init('https://spike-production-453f.up.railway.app/dataUsers');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
